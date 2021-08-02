@@ -1,0 +1,44 @@
+{
+    "audio": "pipewire",
+    "bootloader": "systemd-bootctl",
+    "custom-commands": [
+        "usermod -aG vboxsf,wheel -s /bin/zsh geo",
+        "su geo -c 'echo \"VBoxClient --clipboard\" >> ~/.xprofile'",
+
+        "sed -i 's/geo ALL=(ALL)/# geo ALL=(ALL)/' /etc/sudoers",
+        "sed -i 's/# %wheel ALL=(ALL) NO/%wheel ALL=(ALL) NO/' /etc/sudoers",
+        "su - geo -c 'cd /tmp ; git clone https://aur.archlinux.org/paru-bin; cd /tmp/paru-bin ; makepkg -si --noconfirm'",
+        "su - geo -c 'paru -S --noconfirm zplug rxvt'",
+        "sed -i 's/%wheel ALL=(ALL) NO/# %wheel ALL=(ALL) NO/' /etc/sudoers",
+        "sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers",
+
+        "su geo -c 'curl -Lks https://raw.githubusercontent.com/geowarin/dotfiles-linux/main/.bin/install.sh | /bin/bash'"
+    ],
+    "filesystem": "ext4",
+    "gfx_driver": "VMware / VirtualBox (open-source)",
+    "harddrive": {
+        "path": "/dev/sda"
+    },
+    "hostname": "leftwm",
+    "kernels": [
+        "linux"
+    ],
+    "keyboard-language": "fr",
+    "mirror-region": "France",
+    "nic": {
+        "NetworkManager": true
+    },
+    "ntp": true,
+    "packages": ["git", "vim", "zsh", "virtualbox-guest-utils", "fzf", "kitty", "xorg-server", "xorg-xinit", "xterm", "xmonad", "xmonad-contrib", "xmobar", "dzen2", "dmenu", "lightdm", "lightdm-gtk-greeter"],
+    "profile": "minimal",
+    "services": ["vboxservice", "lightdm"],
+    "superusers": {
+        "geo": {
+            "!password": "to"
+        }
+    },
+    "sys-encoding": "utf-8",
+    "sys-language": "en_US",
+    "timezone": "Europe/Paris",
+    "users": {}
+}
