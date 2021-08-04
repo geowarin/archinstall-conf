@@ -1,5 +1,5 @@
 
-$name = "xmonad"
+$name = "i3"
 $disk_size = 10000
 $iso = "$HOME\Downloads\archlinux-2021.07.01-x86_64.iso"
 

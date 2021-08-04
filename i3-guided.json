@@ -4,14 +4,14 @@
     "custom-commands": [
         "usermod -aG vboxsf,wheel -s /bin/zsh geo",
         "su geo -c 'echo \"VBoxClient --clipboard\" >> ~/.xprofile'",
-
         "sed -i 's/geo ALL=(ALL).*/d/' /etc/sudoers",
         "sed -i 's/# %wheel ALL=(ALL) NO/%wheel ALL=(ALL) NO/' /etc/sudoers",
         "su - geo -c 'cd /tmp ; git clone https://aur.archlinux.org/paru-bin; cd /tmp/paru-bin ; makepkg -si --noconfirm'",
-        "su - geo -c 'paru -S --noconfirm zplug'",
+        "su - geo -c 'paru -S --noconfirm zplug bumblebee-status'",
+        "su - geo -c 'paru -S --noconfirm visual-studio-code-bin nerd-fonts-jetbrains-mono'",
+        "su - geo -c 'paru -S --noconfirm grub-theme-poly-dark-git rofi-greenclip bitw-git bitwarden-cli-bin bitwarden-rofi autotiling betterlockscreen'",
         "sed -i 's/%wheel ALL=(ALL) NO/# %wheel ALL=(ALL) NO/' /etc/sudoers",
         "sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers",
-
         "su geo -c 'curl -Lks https://raw.githubusercontent.com/geowarin/dotfiles-linux/main/.bin/install.sh | /bin/bash'"
     ],
     "filesystem": "ext4",
@@ -19,7 +19,7 @@
     "harddrive": {
         "path": "/dev/sda"
     },
-    "hostname": "qtile",
+    "hostname": "i3",
     "kernels": [
         "linux"
     ],
@@ -29,9 +29,24 @@
         "NetworkManager": true
     },
     "ntp": true,
-    "packages": ["git", "zsh", "virtualbox-guest-utils", "fzf", "qtile", "kitty", "xorg-server", "xorg-xinit", "xterm"],
-    "profile": "minimal",
-    "services": ["vboxservice"],
+    "packages": [
+        "git",
+        "zsh",
+        "virtualbox-guest-utils",
+        "fzf",
+        "kitty",
+        "thunar",
+        "tumbler",
+        "gvfs",
+        "rofi",
+        "python-i3ipc",
+        "dunst",
+        "papirus-icon-theme"
+    ],
+    "profile": "i3",
+    "services": [
+        "vboxservice"
+    ],
     "superusers": {
         "geo": {
             "!password": "to"
