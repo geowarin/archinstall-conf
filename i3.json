@@ -35,6 +35,7 @@
         "man-db",
         "zram-generator",
         "pacman-contrib",
+        "reflector",
         "xorg-server",
         "xorg-xinit",
         "xdg-user-dirs",
