@@ -1,23 +1,21 @@
 {
     "audio": "pipewire",
-    "bootloader": "grub-install",
+    "bootloader": "systemd-bootctl",
     "custom-commands": [
-        "usermod -aG wheel -s /bin/zsh geo",
+        "usermod -aG vboxsf,wheel -s /bin/zsh geo",
+        "su geo -c 'echo \"VBoxClient --clipboard\" >> ~/.xprofile'",
         "sed -i 's/geo ALL=(ALL).*/d/' /etc/sudoers",
         "sed -i 's/# %wheel ALL=(ALL) NO/%wheel ALL=(ALL) NO/' /etc/sudoers",
         "su - geo -c 'cd /tmp ; git clone https://aur.archlinux.org/paru-bin; cd /tmp/paru-bin ; makepkg -si --noconfirm'",
         "su - geo -c 'paru -S --noconfirm zplug'",
         "su - geo -c 'paru -S --noconfirm visual-studio-code-bin nerd-fonts-jetbrains-mono'",
         "su - geo -c 'paru -S --noconfirm grub-theme-poly-dark-git rofi-greenclip bitw-git bitwarden-cli-bin bitwarden-rofi autotiling betterlockscreen'",
-        "su geo -c 'curl -Lks https://raw.githubusercontent.com/geowarin/dotfiles-linux/main/.bin/install.sh | /bin/bash'",
-        "su geo -c './home/geo/.bin/system.sh'",
-        "su geo -c './home/geo/.bin/theme.sh'",
-        "su geo -c './home/geo/.bin/nvidia.sh linux'",
         "sed -i 's/%wheel ALL=(ALL) NO/# %wheel ALL=(ALL) NO/' /etc/sudoers",
         "sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers",
-        "grub-mkconfig -o /boot/grub/grub.cfg"
+        "su geo -c 'curl -Lks https://raw.githubusercontent.com/geowarin/dotfiles-linux/main/.bin/install.sh | /bin/bash'"
     ],
     "filesystem": "ext4",
+    "gfx_driver": "VMware / VirtualBox (open-source)",
     "harddrive": {
         "path": "/dev/sda"
     },
@@ -33,8 +31,6 @@
     "ntp": true,
     "packages": [
         "man-db",
-        "zram-generator",
-        "pacman-contrib",
         "xorg-server",
         "xorg-xinit",
         "xdg-user-dirs",
@@ -44,6 +40,7 @@
         "i3-gaps",
         "git",
         "zsh",
+        "virtualbox-guest-utils",
         "fzf",
         "kitty",
         "polkit-gnome",
@@ -54,7 +51,6 @@
         "rofi",
         "python-i3ipc",
         "dunst",
-        "arc-gtk-theme",
         "papirus-icon-theme",
         "nitrogen",
         "picom",
@@ -62,7 +58,7 @@
     ],
     "profile": "minimal",
     "services": [
-        "lightdm", "reflector.timer", "fstrim.timer", "paccache.timer"
+        "vboxservice", "lightdm"
     ],
     "superusers": {
         "geo": {
