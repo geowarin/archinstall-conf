@@ -4,7 +4,7 @@
     "custom-commands": [
         "usermod -aG vboxsf,wheel -s /bin/zsh geo",
         "su geo -c 'echo \"VBoxClient --clipboard\" >> ~/.xprofile'",
-        "sed -i 's/geo ALL=(ALL).*/d/' /etc/sudoers",
+        "sed -i '/geo ALL=(ALL).*/d' /etc/sudoers",
         "sed -i 's/# %wheel ALL=(ALL) NO/%wheel ALL=(ALL) NO/' /etc/sudoers",
         "su - geo -c 'cd /tmp ; git clone https://aur.archlinux.org/paru-bin; cd /tmp/paru-bin ; makepkg -si --noconfirm'",
         "su - geo -c 'paru -S --noconfirm zplug'",
