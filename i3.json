@@ -14,6 +14,7 @@
         "su geo -c 'curl -Lks https://raw.githubusercontent.com/geowarin/dotfiles-linux/main/.bin/install.sh | /bin/bash'",
         "./home/geo/.bin/system.sh",
         "./home/geo/.bin/theme.sh",
+        "./home/geo/.bin/user-theme.sh /home/geo",
         "./home/geo/.bin/nvidia.sh linux",
         "grub-mkconfig -o /boot/grub/grub.cfg"
     ],
@@ -42,6 +43,7 @@
         "xdg-utils",
         "lightdm",
         "lightdm-gtk-greeter",
+        "archlinux-wallpaper",
         "i3-gaps",
         "git",
         "zsh",
