@@ -55,6 +55,7 @@
         "rofi",
         "python-i3ipc",
         "dunst",
+        "noto-fonts",
         "arc-gtk-theme",
         "papirus-icon-theme",
         "nitrogen",
